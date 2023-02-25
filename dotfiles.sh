@@ -8,7 +8,7 @@ SCRIPT_NAME="$(basename ${0})"
 SRC_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 DEFAULT_PACKAGES=("git" "ca-certificates" "curl" "gnupg" "lsb-release" "tree" "zip" "unzip" )
 SDK_PACKAGES=("${DEFAULT_PACKAGES[@]}" "build-essential" "git-flow") # "python3" "python3-pip"
-DEVOPS_PACKAGES=("${SDK_PACKAGES[@]}")
+DEVOPS_PACKAGES=("${SDK_PACKAGES[@]}" "software-properties-common" "wget")
 WSL_PACKAGES=("${DEVOPS_PACKAGES[@]}" "wslu")
 SUDO=""; command -v sudo &>/dev/null && SUDO="sudo"
 
@@ -17,7 +17,7 @@ echo $SRC_DIR
 # Loggers
 # -----------------------------------------------------------------------------
 info() { printf "%b[info]%b %s\n" '\e[0;32m\033[1m' '\e[0m' "$*" >&2; }
-warn() { printf "%b[warn]%b %s\n" '\e[0;33m\033[1m' '\e[0m' "$*" >&2; }
+warn() { printf "%b[warn]%b %s\n" '\e[0;33m\033[1m' '\e[0m' "$*" >&2; exit 0; }
 erro() { printf "%b[erro]%b %s\n" '\e[0;31m\033[1m' '\e[0m' "$*" >&2; exit 1; }
 
 # Directories
@@ -44,6 +44,8 @@ function wsl_dotfiles () {
 # -----------------------------------------------------------------------------
 function devops_dotfiles () {
     sdk_dotfiles
+
+    bash ${SRC_DIR}/scripts/terraform.sh
 }
 
 # SDK packages

@@ -24,3 +24,7 @@ fi
 # Load starship
 # -----------------------------------------------------------------------------
 [[ -f "${HOME}/.local/bin/starship" ]] && eval "$(starship init zsh)"
+
+# Load terraform
+# -----------------------------------------------------------------------------
+[[ -f "/usr/bin/terraform" ]] && complete -C /usr/bin/terraform terraform
