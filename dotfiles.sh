@@ -7,7 +7,7 @@
 SCRIPT_NAME="$(basename ${0})"
 SRC_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 DEFAULT_PACKAGES=("git" "ca-certificates" "curl" "gnupg" "lsb-release" "tree" "zip" "unzip" )
-SDK_PACKAGES=("${DEFAULT_PACKAGES[@]}" "build-essential" "git-flow") # "python3" "python3-pip"
+SDK_PACKAGES=("${DEFAULT_PACKAGES[@]}" "build-essential" "git-flow" "python3" "python3-pip")
 DEVOPS_PACKAGES=("${SDK_PACKAGES[@]}" "software-properties-common" "wget")
 WSL_PACKAGES=("${DEVOPS_PACKAGES[@]}" "wslu")
 SUDO=""; command -v sudo &>/dev/null && SUDO="sudo"
