@@ -28,3 +28,7 @@ fi
 # Load terraform
 # -----------------------------------------------------------------------------
 [[ -f "/usr/bin/terraform" ]] && complete -C /usr/bin/terraform terraform
+
+# Load GPG
+# -----------------------------------------------------------------------------
+export GPG_TTY=$(tty)

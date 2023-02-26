@@ -22,6 +22,8 @@ function check_git () {
 function setup_git () {
     git config --global user.name "Alberto Castañeiras" && \
     git config --global user.email "alberto@casta.me" && \
+    git config --global commit.gpgsign true && \
+    git config --global user.signingkey 2B189D9D45A7C228 && \
     git config --global init.defaultBranch main || \
     return 1 && return 0
 }
