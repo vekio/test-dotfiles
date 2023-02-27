@@ -11,7 +11,7 @@ NVM_VERSION=""
 # Loggers
 # -----------------------------------------------------------------------------
 info() { printf "%b[info]%b %s\n" '\e[0;32m\033[1m' '\e[0m' "$*" >&2; }
-warn() { printf "%b[warn]%b %s\n" '\e[0;33m\033[1m' '\e[0m' "$*" >&2; }
+warn() { printf "%b[warn]%b %s\n" '\e[0;33m\033[1m' '\e[0m' "$*" >&2; exit 0; }
 erro() { printf "%b[erro]%b %s\n" '\e[0;31m\033[1m' '\e[0m' "$*" >&2; exit 1; }
 
 # Install nvm
@@ -46,6 +46,9 @@ function install_nodejs () {
 # Main
 # -----------------------------------------------------------------------------
 function main () {
+    if command -v node &>/dev/null; then
+        warn "nodejs already installed"
+    fi
     get_nvm_version || erro "get latest nvm version"
     install_nvm || erro "install nvm"
     install_nodejs || erro "install nodejs"
