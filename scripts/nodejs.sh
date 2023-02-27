@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Installs or updates nodejs.
+# Installs nodejs.
 
 # Global variables
 # -----------------------------------------------------------------------------
